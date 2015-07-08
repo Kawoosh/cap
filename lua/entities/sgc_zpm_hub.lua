@@ -615,6 +615,7 @@ function ENT:Draw()
 		    	draw.DrawText(SGLanguage.GetMessage("hud_capacity"), "center2", ScrW() / 2 + 40 + w, ScrH() / 2 +165 - h, Color(209,238,238,255),0);
 		    end
 
+			local add,perc,eng
 			if(IsValid(self.Entity))then
 	            add = self.Entity:GetNWString("add");
 	            perc = self.Entity:GetNWString("perc");
@@ -627,7 +628,7 @@ function ENT:Draw()
             if(add == "Inactive")then
                 color = Color(255,0,0,255);
             end
-            if(tonumber(perc)>0)then perc = string.format("%f",perc) end;
+            if(isnumber(perc) and tonumber(perc)>0)then perc = string.format("%f",perc) end;
             if (SGLanguage!=nil and SGLanguage.GetMessage!=nil) then
 	        	draw.SimpleText(SGLanguage.GetMessage("hud_sts_"..add:lower()), "center", ScrW() / 2 + 40 + w, ScrH() / 2 +85 - h, color,0);
 	        end

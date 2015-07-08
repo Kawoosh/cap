@@ -680,6 +680,7 @@ function ENT:Draw()
 		    draw.DrawText("ZPM 2", "center", ScrW() / 2 + 180 + w, ScrH() / 2 +115 - h, Color(209,238,238,255),0);
 		    draw.DrawText("ZPM 3", "center", ScrW() / 2 + 180 + w, ScrH() / 2 +165 - h, Color(209,238,238,255),0);
 
+			local add,perc,eng,zpm1,zpm2,zpm3
 			if(IsValid(self.Entity))then
 	            add = self.Entity:GetNWString("add");
 	            perc = self.Entity:GetNWString("perc");
@@ -695,10 +696,10 @@ function ENT:Draw()
             if(add == "Inactive")then
                 color = Color(255,0,0,255);
             end
-            if(tonumber(perc)>0)then perc = string.format("%f",perc) end;
-			if(tonumber(zpm1)>0 and zpm1 != nil)then zpm1 = string.format("%G",zpm1) end;
-			if(tonumber(zpm2)>0 and zpm2 != nil)then zpm2 = string.format("%G",zpm2) end;
-			if(tonumber(zpm3)>0 and zpm3 != nil)then zpm3 = string.format("%G",zpm3) end;
+            if(isnumber(perc) and tonumber(perc)>0)then perc = string.format("%f",perc) end;
+			if(zpm1 != nil and tonumber(zpm1)>0)then zpm1 = string.format("%G",zpm1) end;
+			if(zpm2 != nil and tonumber(zpm2)>0)then zpm2 = string.format("%G",zpm2) end;
+			if(zpm3 != nil and tonumber(zpm3)>0)then zpm3 = string.format("%G",zpm3) end;
 
             if (SGLanguage!=nil and SGLanguage.GetMessage!=nil) then
 	        	draw.SimpleText(SGLanguage.GetMessage("hud_sts_"..add:lower()), "center", ScrW() / 2 + 40 + w, ScrH() / 2 +85 - h, color,0);

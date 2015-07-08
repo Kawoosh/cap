@@ -327,6 +327,7 @@ function ENT:Draw()
 		    draw.DrawText("Energy", "center2", ScrW() / 2 + 40 + w, ScrH() / 2 +115 - h, Color(209,238,238,255),0);
 		    draw.DrawText("Capacity", "center2", ScrW() / 2 + 40 + w, ScrH() / 2 +165 - h, Color(209,238,238,255),0);
 
+			local add,perc,eng
 			if(IsValid(self.Entity))then
 	            add = self.Entity:GetNetworkedString("add");
 	            perc = self.Entity:GetNWString("perc");
@@ -339,7 +340,7 @@ function ENT:Draw()
             if(add == "Disconnected" or add == "Depleted")then
                 color = Color(255,0,0,255);
             end
-            if(tonumber(perc)>0)then
+            if(isnumber(perc) and tonumber(perc)>0)then
                 perc = string.format("%f",perc);
 	        end
 
